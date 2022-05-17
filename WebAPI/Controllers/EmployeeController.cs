@@ -33,7 +33,7 @@ namespace WebAPI.Controllers
                 var validatorResult = _employeeValidator.IsValid(employee);
                 if (!validatorResult.IsValid)
                     return UnprocessableEntity("Some specific error message from the validator object"); 
-                    // for some reason they want 422 status for validation errors
+                    // They want 422 status for validation errors
 
                 return Ok(_powerShellOperations.ExecuteScript("GetEmployeePermisions.ps1", _employeeStringify.GetEmployee(employee, authorisation)));
             }
